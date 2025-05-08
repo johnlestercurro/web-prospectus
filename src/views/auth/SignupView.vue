@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { supabase } from '@/utils/supabase'; // diri naka store ang connection sa supabase  
 
 const router = useRouter();
 const email = ref('');
@@ -13,28 +14,56 @@ const handleSignUp = async () => {
   loading.value = true;
   error.value = null;
 
+  // validation
+  if (!email.value || !password.value || !confirmPassword.value) {
+    error.value = 'Please fill all required fields';
+    loading.value = false;
+    return;
+  }
+
   if (password.value !== confirmPassword.value) {
     error.value = 'Passwords do not match';
     loading.value = false;
     return;
   }
 
-  // Simulate successful sign-up (for testing without Supabase)
-  if (email.value && password.value) {
-    router.push('/login'); // Redirect to login after successful sign-up
-  } else {
-    error.value = 'Sign up failed. Please fill all required fields.';
+
+  // added for extra authentication
+  if (password.value.length < 6) {
+    error.value = 'Password should be at least 6 characters';
+    loading.value = false;
+    return;
   }
 
-  loading.value = false;
+  // sign up process
+  try {
+    const { error: supabaseError } = await supabase.auth.signUp({
+      email: email.value,
+      password: password.value,
+    });
+
+    if (supabaseError) throw supabaseError;
+
+    // redirect to login after successful sign-up
+    router.push('/login');
+    
+  } catch (err) {
+    error.value = err.message || 'Sign up failed. Please try again.';
+  } finally {
+    loading.value = false;
+  }
 };
 </script>
 
 <template>
   <v-container class="fill-height d-flex align-center justify-center">
     <v-card class="pa-6" width="400" elevation="10">
-      <v-card-title class="text-center text-h5 font-weight-bold">Sign Up</v-card-title>
       <v-card-text>
+        <div class="text-center mb-4">
+          <img src="@/assets/LogoCourse.png" alt="Logo" style="height: 140px; max-width: 100%;" />
+          <h3 class="mt-2 text-subtitle-1 font-weight-medium">Course Tracker Management System (CSU)</h3>
+          
+        </div>
         <v-form @submit.prevent="handleSignUp">
           <v-text-field
             v-model="email"
@@ -51,6 +80,7 @@ const handleSignUp = async () => {
             required
             outlined
             prepend-inner-icon="mdi-lock"
+            :rules="[v => !!v || 'Password is required', v => (v && v.length >= 6) || 'Min 6 characters']"
           ></v-text-field>
           <v-text-field
             v-model="confirmPassword"

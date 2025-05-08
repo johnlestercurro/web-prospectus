@@ -1,6 +1,9 @@
 import LoginView from '@/views/auth/LoginView.vue'
 import SignupView from '@/views/auth/SignupView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import Dashboard from '@/components/dashboard/Dashboard.vue'
+import AddDepartment from '@/components/prospectus/AddDepartment.vue'
+import IT_Dashboard from '@/components/dashboard/IT_Dashboard.vue'
 
 
 const router = createRouter({
@@ -21,6 +24,26 @@ const router = createRouter({
       name: 'Signup',
       component: SignupView,
     },
+    {
+
+      path: '/dashboard/CS',
+      name: 'CS_Dashboard',
+      component: Dashboard,
+    },
+
+    {
+      path: '/dashboard/IT',
+      name: 'IT_Dashboard',
+      component: IT_Dashboard,
+    },
+
+    {
+      path: '/add-department',
+      name: 'AddDepartment',
+      component: AddDepartment,
+    },
+
+ 
 
   ],
 })
