@@ -272,7 +272,7 @@ const saveStudentProfile = async () => {
 
     const deptId = updatedStudent.department_id;
     if (deptId === 2) {
-      router.push('/dashboard');
+      router.push('/dashboard/CS');
     } else if (deptId === 6) {
       router.push('/dashboard/IT');
     } else if (deptId === 7) {
@@ -303,7 +303,7 @@ onMounted(() => {
   
     
       <div v-if="student" class="department-content">
-        ?
+      
         <div class="header">
           <h1>PROGRAM CURRICULUM</h1>
           <div class="program-info">
