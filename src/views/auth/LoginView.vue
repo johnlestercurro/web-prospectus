@@ -32,9 +32,7 @@ const handleLogin = async (e) => {
 
 <template>
   <v-container fluid class="fill-height d-flex flex-column align-center justify-center pa-4">
-    <div class="text-center mb-4">
-      <h2 class="text-h4 font-weight-bold">Log In</h2>
-    </div>
+  
     <v-card class="pa-6" max-width="500" width="100%" elevation="10">
       <v-card-text>
         <div class="text-center mb-4">
