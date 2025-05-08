@@ -170,12 +170,7 @@ const updateDepartment = async () => {
   }
 };
 
-const formatIdNumber = (idNumber) => {
-  if (!idNumber) return '';
-  return idNumber.length > 3 
-    ? `${idNumber.slice(0, 3)}-${idNumber.slice(3)}`
-    : idNumber;
-};
+
 
 const handleGradeUpdate = ({ courseCode, grade }) => {
   const allSemesters = [
@@ -260,7 +255,7 @@ onMounted(() => {
                 <br>
                 <div class="profile-info">
                   <p><strong>Name:</strong> {{ student.first_name }} {{ student.middle_name }} {{ student.last_name }}</p>
-                  <p><strong>ID Number:</strong> {{ formatIdNumber(student.id_number) }}</p>
+                  <p><strong>ID Number:</strong> {{ student.id_number }}</p>
                   <p><strong>Year Level:</strong> {{ student.year_level }}</p>
                   <p><strong>Program:</strong> {{ department?.program || 'Undeclared' }}</p>
                   <p><strong>Department:</strong> {{ department?.depatment_name || 'Undeclared' }}</p>
