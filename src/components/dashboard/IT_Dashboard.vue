@@ -16,6 +16,7 @@ const loading = ref(true)
 const error = ref(null)
 const selectedDepartment = ref(null)
 const selectedStatus = ref('All');
+const sidebarVisible = ref(false);
 
 // Fetch all dashboard data
 const fetchDashboardData = async () => {
@@ -207,6 +208,10 @@ const logout = async () => {
   }
 };
 
+const toggleSidebar = () => {
+  sidebarVisible.value = !sidebarVisible.value;
+};
+
 
 
 // onMounted hook to fetch the dashboard data
@@ -240,9 +245,13 @@ onMounted(() => {
         <div v-if="student" class="dashboard-content">
           <!-- Left Sidebar -->
           <div class="profile-sidebar">
-            <div class="profile-card">
+            <button class="hamburger" @click="toggleSidebar">
+              ☰
+            </button>
+
+            <div class="profile-card" :class="{ show: sidebarVisible }">
               <div class="profile-header">
-                <h3>Student Profile</h3>
+                <h4>My Profile</h4>
               </div>
               <div class="profile-body">
                 <div class="avatar">
@@ -262,6 +271,7 @@ onMounted(() => {
               </div>
             </div>
           </div>
+  
   
           <!-- Main Content -->
           <div class="main-content-container">

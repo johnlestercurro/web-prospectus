@@ -248,34 +248,34 @@ onMounted(() => {
       <div :class="{'blur-content': loading || error}">
         <div v-if="student" class="dashboard-content">
           <!-- Left Sidebar -->
-          <div class="profile-sidebar">
-    <button class="hamburger" @click="toggleSidebar">
-      ☰
-    </button>
+                  <div class="profile-sidebar">
+            <button class="hamburger" @click="toggleSidebar">
+              ☰
+            </button>
 
-    <div class="profile-card" :class="{ show: sidebarVisible }">
-      <div class="profile-header">
-        <h4>My Profile</h4>
-      </div>
-      <div class="profile-body">
-        <div class="avatar">
-          {{ student.first_name?.charAt(0) }}{{ student.last_name?.charAt(0) }}
-        </div>
-        <br>
-        <div class="profile-info">
-          <p><strong>Name:</strong> {{ student.first_name }} {{ student.middle_name }} {{ student.last_name }}</p>
-          <p><strong>ID Number:</strong> {{ formatIdNumber(student.id_number) }}</p>
-          <p><strong>Year Level:</strong> {{ student.year_level }}</p>
-          <p><strong>Program:</strong> {{ department?.program || 'Undeclared' }}</p>
-          <p><strong>Department:</strong> {{ department?.depatment_name || 'Undeclared' }}</p>
-        </div>
-      </div>
-      <div class="logout-section">
-        <button class="logout-button" @click="logout">Logout</button>
-      </div>
-    </div>
-  </div>
-  
+            <div class="profile-card" :class="{ show: sidebarVisible }">
+              <div class="profile-header">
+                <h4>My Profile</h4>
+              </div>
+              <div class="profile-body">
+                <div class="avatar">
+                  {{ student.first_name?.charAt(0) }}{{ student.last_name?.charAt(0) }}
+                </div>
+                <br>
+                <div class="profile-info">
+                  <p><strong>Name:</strong> {{ student.first_name }} {{ student.middle_name }} {{ student.last_name }}</p>
+                  <p><strong>ID Number:</strong> {{ formatIdNumber(student.id_number) }}</p>
+                  <p><strong>Year Level:</strong> {{ student.year_level }}</p>
+                  <p><strong>Program:</strong> {{ department?.program || 'Undeclared' }}</p>
+                  <p><strong>Department:</strong> {{ department?.depatment_name || 'Undeclared' }}</p>
+                </div>
+              </div>
+              <div class="logout-section">
+                <button class="logout-button" @click="logout">Logout</button>
+              </div>
+            </div>
+          </div>
+          
           <!-- Main Content -->
           <div class="main-content-container">
             <div class="main-content">
