@@ -298,10 +298,24 @@ onMounted(() => {
 <template>
     <div class="department-dashboard">
      
-      <div v-if="loading" class="loading">Loading...</div>
-      <div v-if="error" class="error">{{ error }}</div>
+      <div v-if="loading" class="overlay loading-overlay">
+        <div class="overlay-content">
+          <v-progress-circular indeterminate color="success" size="70"></v-progress-circular>
+          <div class="loading-text">Getting things ready...</div>
+        </div>
+      </div>
+
+      <div v-if="error" class="overlay error-overlay">
+        <div class="overlay-content">
+          <v-icon color="error" size="64">mdi-alert-circle-outline</v-icon>
+          <div class="error-text">{{ error }}</div>
+          <v-btn color="primary" @click="error = null" class="mt-4">Dismiss</v-btn>
+        </div>
+      </div>
+
+
   
-    
+    <div :class="{'blur-content': loading || error}">
       <div v-if="student" class="department-content">
       
         <div class="header">
@@ -387,6 +401,7 @@ onMounted(() => {
             </div>
             </div>
 
+      </div>
       </div>
     </div>
   </template>
