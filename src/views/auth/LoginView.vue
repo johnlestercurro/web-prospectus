@@ -21,7 +21,7 @@ const handleLogin = async (e) => {
     });
 
     if (authError) throw authError;
-    router.push('/dashboard');
+    router.push('/add-department');
   } catch (err) {
     error.value = err.message || 'Invalid email or password';
   } finally {
