@@ -347,21 +347,21 @@ onMounted(() => {
         <!-- Profile Creation/Update Section -->
         <div v-if="!student.first_name || !student.last_name || !student.year_level || !student.id_number" class="profile-update-section">
     <h3 class="text-center">Complete Your Profile</h3>
-    <v-sheet class="mx-auto" width="600"> 
+    <v-sheet class="mx-auto pa-4" width="100%" max-width="600"> 
         <v-form @submit.prevent="saveStudentProfile" class="profile-form">
             <v-row>
-                <v-col cols="6">
+                <v-col cols="12" sm="6">
                     <v-text-field v-model="profileFields.first_name" placeholder="First Name" required></v-text-field>
                 </v-col>
-                <v-col cols="6">
+                <v-col cols="12" sm="6">
                     <v-text-field v-model="profileFields.last_name" placeholder="Last Name" required></v-text-field>
                 </v-col>
             </v-row>
             <v-row>
-                <v-col cols="6">
+                <v-col cols="12" sm="6">
                     <v-text-field v-model="profileFields.middle_name" placeholder="Middle Name"></v-text-field>
                 </v-col>
-                <v-col cols="6">
+                <v-col cols="12" sm="6">
                     <v-text-field v-model="profileFields.year_level" placeholder="Year Level" required></v-text-field>
                 </v-col>
             </v-row>
@@ -369,7 +369,7 @@ onMounted(() => {
                 <v-col cols="12">
                     <v-text-field v-model="profileFields.id_number" placeholder="ID Number" required></v-text-field>
                 </v-col>
-                <v-col cols="12">
+                <v-col cols="12" class="text-center">
                     <v-btn variant="outlined" type="submit" class="submit-button">Update Profile</v-btn>
                 </v-col>
             </v-row>
