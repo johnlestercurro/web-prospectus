@@ -58,8 +58,12 @@ const handleSignUp = async () => {
 <template>
   <v-container class="fill-height d-flex align-center justify-center">
     <v-card class="pa-6" width="400" elevation="10">
-      <v-card-title class="text-center text-h5 font-weight-bold">Sign Up</v-card-title>
       <v-card-text>
+        <div class="text-center mb-4">
+          <img src="@/assets/LogoCourse.png" alt="Logo" style="height: 140px; max-width: 100%;" />
+          <h3 class="mt-2 text-subtitle-1 font-weight-medium">Course Tracker Management System (CSU)</h3>
+          
+        </div>
         <v-form @submit.prevent="handleSignUp">
           <v-text-field
             v-model="email"
