@@ -35,10 +35,6 @@ const handleLogin = async (e) => {
     <div class="text-center mb-4">
       <h2 class="text-h4 font-weight-bold">Log In</h2>
     </div>
-=======
-   
->>>>>>> Stashed changes
-
     <v-card class="pa-6" max-width="500" width="100%" elevation="10">
       <v-card-text>
         <div class="text-center mb-4">
