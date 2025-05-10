@@ -41,15 +41,17 @@ const handleLogin = async (e) => {
         </div>
         <form @submit="handleLogin">
           <v-text-field
+            class="login-form"
             v-model="email"
             label="Email"
             type="email"
-            
             required
             outlined
+            dense
             prepend-inner-icon="mdi-email"
           ></v-text-field>
           <v-text-field
+            class="login-form"
             v-model="password"
             label="Password"
             type="password"
@@ -73,8 +75,14 @@ const handleLogin = async (e) => {
   </v-container>
 </template>
 
-<style scoped>
+<style>
 .v-card {
   border-radius: 16px;
+}
+
+.login-form input {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+  padding-top: 15px !important;
 }
 </style>

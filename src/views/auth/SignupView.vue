@@ -66,6 +66,7 @@ const handleSignUp = async () => {
         </div>
         <v-form @submit.prevent="handleSignUp">
           <v-text-field
+            class="register-form"
             v-model="email"
             label="Email"
             type="email"
@@ -74,6 +75,7 @@ const handleSignUp = async () => {
             prepend-inner-icon="mdi-email"
           ></v-text-field>
           <v-text-field
+            class="register-form"
             v-model="password"
             label="Password"
             type="password"
@@ -83,6 +85,7 @@ const handleSignUp = async () => {
             :rules="[v => !!v || 'Password is required', v => (v && v.length >= 6) || 'Min 6 characters']"
           ></v-text-field>
           <v-text-field
+            class="register-form"
             v-model="confirmPassword"
             label="Confirm Password"
             type="password"
@@ -106,8 +109,14 @@ const handleSignUp = async () => {
   </v-container>
 </template>
 
-<style scoped>
+<style>
 .v-card {
   border-radius: 16px;
+}
+
+.register-form input {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+  padding-top: 15px !important;
 }
 </style>
