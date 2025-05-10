@@ -1,8 +1,9 @@
 <script setup>
 import { ref, onMounted, reactive, watch } from 'vue'
 import { supabase } from '@/utils/supabase';
+import './Dashboard.css'
 import CurriculumTable from '@/components/table/CurriculumTable.vue';
-import { firstSemCourses, secondSemCourses, secondYearFirstSem, secondYearSecondSem, thirdYearFirstSem, thirdYearSecondSem, fourthYearFirstSem, fourthYearSecondSem } from '../courses/it_addcourse.js'
+import { firstSemCourses, secondSemCourses, secondYearFirstSem, secondYearSecondSem, thirdYearFirstSem, thirdYearSecondSem, fourthYearFirstSem, fourthYearSecondSem } from '../courses/is_addcourse.js'
 
 // Data refs
 const user = ref(null) 
@@ -19,7 +20,7 @@ const selectedStatus = ref('All');
 const sidebarVisible = ref(false);
 
 // Fetch all dashboard data
-const fetchDashboardData = async () => {
+const fetchCSDashboard = async () => {
   try {
     loading.value = true;
     error.value = null;
@@ -82,7 +83,7 @@ const fetchDepartmentAndCourses = async (departmentId) => {
   try {
     const { data: departmentData, error: deptError } = await supabase
       .from('departments')
-      .select('id, depatment_name, program, college, date_of_revison, effectivity, basis')
+      .select('id, depatment_name, program, college,date_of_revision, effectivity, basis')
       .eq('id', departmentId)
       .single();
 
@@ -112,7 +113,7 @@ const programDetails = reactive({
   college: '',
   effectivity: '',
   basis: '',
-  date_of_revison: ''
+  date_of_revision: ''  
 });
 
 // Load existing details when department is set
@@ -122,19 +123,19 @@ watch(department, (newDept) => {
     programDetails.college = newDept.college || '';
     programDetails.effectivity = newDept.effectivity || '';
     programDetails.basis = newDept.basis || '';
-    programDetails.date_of_revison = newDept.date_of_revison || '';
+    programDetails.date_of_revision = newDept.date_of_revision || '';
   }
 }, { immediate: true });
 
 const cancelEdit = () => {
   editingProgramDetails.value = false;
-  // Reset form to current values
+  
   if (department.value?.id) {
     programDetails.program = department.value.program || '';
     programDetails.college = department.value.college || '';
     programDetails.effectivity = department.value.effectivity || '';
     programDetails.basis = department.value.basis || '';
-    programDetails.date_of_revison = department.value.date_of_revison || '';
+    programDetails.date_of_revision = department.value.date_of_revision || '';
   }
 };
 
@@ -174,7 +175,6 @@ const updateDepartment = async () => {
 };
 
 
-
 const handleGradeUpdate = ({ courseCode, grade }) => {
   const allSemesters = [
     firstSemCourses,
@@ -200,7 +200,7 @@ const logout = async () => {
   try {
     const { error } = await supabase.auth.signOut();
     if (error) throw error;
-    window.location.href = '/'; // Redirect to homepage or login page
+    window.location.href = '/'; 
   } catch (err) {
     console.error('Logout error:', err.message);
   }
@@ -211,11 +211,11 @@ const toggleSidebar = () => {
 };
 
 
-
 // onMounted hook to fetch the dashboard data
 onMounted(() => {
-  fetchDashboardData();
+  fetchCSDashboard();
 });
+
 </script>
 
 
@@ -242,7 +242,7 @@ onMounted(() => {
       <div :class="{'blur-content': loading || error}">
         <div v-if="student" class="dashboard-content">
           <!-- Left Sidebar -->
-          <div class="profile-sidebar">
+                  <div class="profile-sidebar">
             <button class="hamburger" @click="toggleSidebar">
               ☰
             </button>
@@ -269,8 +269,7 @@ onMounted(() => {
               </div>
             </div>
           </div>
-  
-  
+          
           <!-- Main Content -->
           <div class="main-content-container">
             <div class="main-content">
@@ -284,7 +283,7 @@ onMounted(() => {
                     <p><strong>College:</strong> {{ department?.college || 'Undeclared' }}</p>
                   </div>
                   <div class="revision-info">
-                    <p><strong>Date of Revision:</strong> Rev 2, {{ department?.date_of_revison || 'Undeclared' }}</p>
+                    <p><strong>Date of Revision:</strong> Rev 2, {{ department?.date_of_revision || 'Undeclared' }}</p>
                     <p><strong>Effectivity:</strong> AY {{ department?.effectivity || 'Undeclared' }}</p>
                     <p><strong>Basis:</strong> CMO 25, series {{ department?.basis || 'Undeclared' }}</p>
                   </div>
@@ -364,4 +363,4 @@ onMounted(() => {
     </div>
   </template>
 
-<style src="./Dashboard.css"></style>
+
