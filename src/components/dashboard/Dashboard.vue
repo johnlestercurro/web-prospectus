@@ -291,7 +291,7 @@ onMounted(() => {
   
               <v-select
                 v-model="selectedStatus"
-                :items="['All', 'Passed', 'Failed', 'Dropped']"
+                :items="['All', 'Passed', 'Failed', 'Dropped', 'INC']"
                 label="Filter by Status"
                 outlined
                 dense
