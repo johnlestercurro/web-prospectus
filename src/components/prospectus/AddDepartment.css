@@ -221,5 +221,23 @@
       font-size: 48px !important;
     }
   }
+  @media (max-width: 600px) {
+  .department-select, .v-text-field {
+    width: 100%;
+  }
+  .confirm-button, .submit-button {
+    width: 100%;
+  }
+}
+
+/* Better mobile form layout */
+.v-card {
+  border-radius: 8px;
+}
+
+/* Consistent field heights */
+.v-text-field {
+  margin-bottom: 8px;
+}
   
   

@@ -340,66 +340,118 @@ onMounted(() => {
         </div>
   
         <!-- Department Selection -->
-       <div v-if="!department?.id && !profileComplete" class="department-selection">
-    <h3 class="text-center">Select Your Department</h3>
+        <div v-if="!department?.id && !profileComplete" class="department-selection pa-4">
+    <h3 class="text-center mb-6">Select Your Department</h3>
     
-    <div class="select-wrapper">
-      <v-select
-        v-model="selectedDepartment"
-        class="department-select mx-auto"
-        :items="departments"
-        item-title="depatment_name"
-        item-value="id"
-        label="Select department"
-        outlined
-        style="width: 300px;"
-      ></v-select>
-    </div>
-    
-    <br>
-    
-    <div class="text-center">
-      <v-btn 
-        @click="updateDepartment"
-        :disabled="!selectedDepartment"
-        class="confirm-button"
-      >
-        Confirm Department
-      </v-btn>
-    </div>
+    <v-row justify="center">
+      <v-col cols="12" sm="8" md="6" lg="4">
+        <v-select
+          v-model="selectedDepartment"
+          :items="departments"
+          item-title="depatment_name"
+          item-value="id"
+          label="Select department"
+          outlined
+          dense
+          class="department-select"
+        ></v-select>
+        
+        <div class="text-center mt-4">
+          <v-btn 
+            @click="updateDepartment"
+            :disabled="!selectedDepartment"
+            color="primary"
+            class="confirm-button"
+            block
+            :class="{ 'mx-auto': $vuetify.display.smAndUp }"
+            style="max-width: 300px;"
+          >
+            Confirm Department
+          </v-btn>
+        </div>
+      </v-col>
+    </v-row>
   </div>
   
   <!-- Profile Creation/Update Section -->
-  <div v-if="department?.id && !profileComplete" class="profile-update-section">
-    <h3 class="text-center">Complete Your Profile</h3>
-    <v-sheet class="mx-auto pa-4" width="100%" max-width="600"> 
-      <v-form @submit.prevent="saveStudentProfile" class="profile-form">
-        <v-row>
-          <v-col cols="12" sm="6">
-            <v-text-field v-model="profileFields.first_name" placeholder="First Name" required></v-text-field>
-          </v-col>
-          <v-col cols="12" sm="6">
-            <v-text-field v-model="profileFields.last_name" placeholder="Last Name" required></v-text-field>
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-col cols="12" sm="6">
-            <v-text-field v-model="profileFields.middle_name" placeholder="Middle Name"></v-text-field>
-          </v-col>
-          <v-col cols="12" sm="6">
-            <v-text-field v-model="profileFields.year_level" placeholder="Year Level" required></v-text-field>
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-col cols="12">
-            <v-text-field v-model="profileFields.id_number" placeholder="ID Number" required></v-text-field>
-          </v-col>
-          <v-col cols="12" class="text-center">
-            <v-btn variant="outlined" type="submit" class="submit-button">Save Profile</v-btn>
-          </v-col>
-        </v-row>
-      </v-form>
-    </v-sheet>
+  <div v-if="department?.id && !profileComplete" class="profile-update-section pa-4">
+    <h3 class="text-center mb-6">Complete Your Profile</h3>
+    
+    <v-row justify="center">
+      <v-col cols="12" sm="10" md="8" lg="6">
+        <v-card flat class="pa-4">
+          <v-form @submit.prevent="saveStudentProfile">
+            <v-row>
+              <v-col cols="12" sm="6">
+                <v-text-field 
+                  v-model="profileFields.first_name" 
+                  label="First Name" 
+                  required
+                  outlined
+                  dense
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-text-field 
+                  v-model="profileFields.last_name" 
+                  label="Last Name" 
+                  required
+                  outlined
+                  dense
+                ></v-text-field>
+              </v-col>
+            </v-row>
+            
+            <v-row>
+              <v-col cols="12" sm="6">
+                <v-text-field 
+                  v-model="profileFields.middle_name" 
+                  label="Middle Name"
+                  outlined
+                  dense
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-text-field 
+                  v-model="profileFields.year_level" 
+                  label="Year Level" 
+                  required
+                  outlined
+                  dense
+                ></v-text-field>
+              </v-col>
+            </v-row>
+            
+            <v-row>
+              <v-col cols="12">
+                <v-text-field 
+                  v-model="profileFields.id_number" 
+                  label="ID Number" 
+                  required
+                  outlined
+                  dense
+                ></v-text-field>
+              </v-col>
+            </v-row>
+            
+            <v-row>
+              <v-col cols="12" class="text-center">
+                <v-btn 
+                  type="submit" 
+                  color="primary"
+                  class="submit-button"
+                  block
+                  :class="{ 'mx-auto': $vuetify.display.smAndUp }"
+                  style="max-width: 300px;"
+                >
+                  Save Profile
+                </v-btn>
+              </v-col>
+            </v-row>
+          </v-form>
+        </v-card>
+      </v-col>
+    </v-row>
   </div>
 
       </div>
