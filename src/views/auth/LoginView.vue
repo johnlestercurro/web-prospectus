@@ -44,6 +44,7 @@ const handleLogin = async (e) => {
             v-model="email"
             label="Email"
             type="email"
+            
             required
             outlined
             prepend-inner-icon="mdi-email"
