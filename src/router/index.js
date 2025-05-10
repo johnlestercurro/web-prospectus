@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Dashboard from '@/components/dashboard/Dashboard.vue'
 import AddDepartment from '@/components/prospectus/AddDepartment.vue'
 import IT_Dashboard from '@/components/dashboard/IT_Dashboard.vue'
+import IS_Dashboard from '@/components/dashboard/IS_Dashboard.vue'
 
 
 const router = createRouter({
@@ -35,6 +36,12 @@ const router = createRouter({
       path: '/dashboard/IT',
       name: 'IT_Dashboard',
       component: IT_Dashboard,
+    },
+
+     {
+      path: '/dashboard/IS',
+      name: 'IS_Dashboard',
+      component: IS_Dashboard,
     },
 
     {
