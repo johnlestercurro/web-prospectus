@@ -83,7 +83,7 @@ const fetchDepartmentAndCourses = async (departmentId) => {
   try {
     const { data: departmentData, error: deptError } = await supabase
       .from('departments')
-      .select('id, depatment_name, program, date_of_revison, college, effectivity, basis')
+      .select('id, depatment_name, program, date_of_revision, college, effectivity, basis')
       .eq('id', departmentId)
       .single();
 

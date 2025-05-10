@@ -82,7 +82,7 @@ const fetchDepartmentAndCourses = async (departmentId) => {
   try {
     const { data: departmentData, error: deptError } = await supabase
       .from('departments')
-      .select('id, depatment_name, program, college, date_of_revison, effectivity, basis')
+      .select('id, depatment_name, program, college, date_of_revision, effectivity, basis')
       .eq('id', departmentId)
       .single();
 
@@ -112,7 +112,7 @@ const programDetails = reactive({
   college: '',
   effectivity: '',
   basis: '',
-  date_of_revison: ''
+  date_of_revision: ''
 });
 
 // Load existing details when department is set
@@ -122,7 +122,7 @@ watch(department, (newDept) => {
     programDetails.college = newDept.college || '';
     programDetails.effectivity = newDept.effectivity || '';
     programDetails.basis = newDept.basis || '';
-    programDetails.date_of_revison = newDept.date_of_revison || '';
+    programDetails.date_of_revision = newDept.date_of_revision || '';
   }
 }, { immediate: true });
 
@@ -134,7 +134,7 @@ const cancelEdit = () => {
     programDetails.college = department.value.college || '';
     programDetails.effectivity = department.value.effectivity || '';
     programDetails.basis = department.value.basis || '';
-    programDetails.date_of_revison = department.value.date_of_revison || '';
+    programDetails.date_of_revision = department.value.date_of_revision || '';
   }
 };
 
@@ -284,7 +284,7 @@ onMounted(() => {
                     <p><strong>College:</strong> {{ department?.college || 'Undeclared' }}</p>
                   </div>
                   <div class="revision-info">
-                    <p><strong>Date of Revision:</strong> Rev 2, {{ department?.date_of_revison || 'Undeclared' }}</p>
+                    <p><strong>Date of Revision:</strong> Rev 2, {{ department?.date_of_revision || 'Undeclared' }}</p>
                     <p><strong>Effectivity:</strong> AY {{ department?.effectivity || 'Undeclared' }}</p>
                     <p><strong>Basis:</strong> CMO 25, series {{ department?.basis || 'Undeclared' }}</p>
                   </div>
