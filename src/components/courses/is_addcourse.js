@@ -20,11 +20,27 @@ export const firstSemCourses = ref([
       co_requisite: 'None',
     },
     {
-      code: 'ITE 15',
-      title: 'Social Issues and Professional Practice',
+      code: 'IS 101',
+      title: 'Fundamentals of Information System',
       contact: { total: 3, lec: 3, lab: 0 },
       total: { total: 3, lec: 3, lab: 0 },
-      grade: 'ITE',
+      pre_requisite: 'None',
+      co_requisite: 'None'
+    },
+    {
+      code: 'IS 105',
+      title: 'Organization and Management Concepts',
+      contact: { total: 3, lec: 3, lab: 0 },
+      total: { total: 3, lec: 3, lab: 0 },
+      pre_requisite: 'None',
+      co_requisite: 'None'
+    },
+    {
+      code: 'STS',
+      title: 'Science Technology Society',
+      contact: { total: 3, lec: 3, lab: 0 },
+      total: { total: 3, lec: 3, lab: 0 },
+      grade: '',
       pre_requisite: 'None',
       co_requisite: 'None',
     },
@@ -37,15 +53,7 @@ export const firstSemCourses = ref([
       pre_requisite: 'None',
       co_requisite: 'None',
     },
-    {
-      code: 'STS',
-      title: 'Science Technology Society',
-      contact: { total: 3, lec: 3, lab: 0 },
-      total: { total: 3, lec: 3, lab: 0 },
-      grade: '',
-      pre_requisite: 'None',
-      co_requisite: 'None',
-    },
+
     {
       code: 'PE 1',
       title: 'Physical Fitness',
@@ -77,30 +85,41 @@ export const firstSemCourses = ref([
   ]);
   
   export const secondSemCourses = ref([
+  
     {
-      code: 'ITE 12',
-      title: 'Fundamentals of  Programming',
-      contact: { total: 5, lec: 2, lab: 3 },
-      total: { total: 3, lec: 2, lab: 1 },
-      pre_requisite: 'ITE 11',
-      co_requisite: 'None'
-    },
-    {
-      code: 'IT 104',
-      title: 'Networking 1',
+      code: 'CSC 102',
+      title: 'Discrete Structures 1',
       contact: { total: 5, lec: 2, lab: 2 },
       total: { total: 3, lec: 2, lab: 1 },
-      pre_requisite: 'ITE 10',
+      pre_requisite: 'None',
       co_requisite: 'None'
     },
     {
-      code: 'IS 105',
-      title: 'Organization and Management Concepts',
+      code: 'ITE 15',
+      title: 'Social Issues and Professional Practices',
       contact: { total: 3, lec: 3, lab: 0 },
       total: { total: 3, lec: 3, lab: 0 },
       pre_requisite: 'None',
       co_requisite: 'None'
     },
+    {
+      code: 'ITE 12',
+      title: 'Fundamentals of Programming',
+      contact: { total: 3, lec: 2, lab: 1 },
+      total: { total: 5, lec: 2, lab: 3 },
+      pre_requisite: 'ITE 11',
+      co_requisite: 'None'
+    },
+    
+    {
+      code: 'EEP 1',
+      title: 'English Enhancement Program 1',
+      contact: { total: 2, lec: 2, lab: 0 },
+      total: { total: 2, lec: 2, lab: 0 },
+      pre_requisite: 'None',
+      co_requisite: 'None'
+    },
+    
     {
       code: 'MMW',
       title: 'Mathematics in the Modern World',
@@ -119,14 +138,6 @@ export const firstSemCourses = ref([
       co_requisite: 'None'
     },
     {
-      code: 'EC',
-      title: 'Effective Communication',
-      contact: { total: 5, lec: 2, lab: 3 },
-      total: { total: 3, lec: 2, lab: 1 },
-      pre_requisite: 'None',
-      co_requisite: 'None'
-    },
-    {
       code: 'PE 2',
       title: 'Rhythmic Activities',
       contact: { total: 2, lec: 2, lab: 0 },
@@ -139,7 +150,7 @@ export const firstSemCourses = ref([
       title: 'CWTS/LTS/ROTC 2',
       contact: { total: 3, lec: 3, lab: 0 },
       total: { total: 3, lec: 3, lab: 0 },
-      pre_requisite: 'None',
+      pre_requisite: 'NSTP 1',
       co_requisite: 'None'
     },
     {
@@ -162,45 +173,46 @@ export const firstSemCourses = ref([
       co_requisite: 'None'
     },
     {
-      code: 'IT 105',
-      title: 'Networking 2',
+      code: 'IS 102',
+      title: 'IT Infrastructure and Network Technologies',
       contact: { total: 3, lec: 2, lab: 1 },
       total: { total: 5, lec: 2, lab: 3 },
-      pre_requisite: 'IT 104',
+      pre_requisite: 'ITE 10',
       co_requisite: 'None'
     },
     {
-      code: 'IS 106',
-      title: 'Quantitaive Methods',
-      contact: { total: 3, lec: 2, lab: 1 },
-      total: { total: 5, lec: 2, lab: 3 },
-      pre_requisite: 'CSC 102',
+      code: 'IS 107',
+      title: 'Business Process Management',
+      contact: { total: 3, lec:3, lab: 0 },
+      total: { total: 3, lec: 3, lab: 0 },
+      pre_requisite: 'IS 105',
       co_requisite: 'None'
     },
     {
-      code: 'ArtApp',
-      title: 'Art Appreciation',
-      contact: { total: 3, lec: 3, lab: 0 },
-      total: { total: 3, lec: 3, lab: 0 }, 
-      pre_requisite: 'None',
-      co_requisite: 'None'
-    },
-    {
-      code: 'ETH',
-      title: 'Ethics',
-      contact: { total: 3, lec: 3, lab: 0 },
+      code: 'IS 100',
+      title: 'Fundamentals of Accounting',
+      contact: { total: 3, lec:3, lab: 0 },
       total: { total: 3, lec: 3, lab: 0 },
       pre_requisite: 'None',
       co_requisite: 'None'
     },
     {
-      code: 'WC',
-      title: 'Workplace Communication',
-      contact: { total: 4, lec: 3, lab: 1 },
-      total: { total: 6, lec: 3, lab: 3 },
-      pre_requisite: 'EC',
+      code: 'IS 113',
+      title: 'IS Innovative and New Technologies',
+      contact: { total: 3, lec: 3, lab: 0 },
+      total: { total: 3, lec: 3, lab: 0 }, 
+      pre_requisite: 'IS 101',
       co_requisite: 'None'
     },
+    {
+      code: 'EEP 2',
+      title: 'English Enhancement Program 2',
+      contact: { total: 2, lec: 2, lab: 0 },
+      total: { total: 2, lec: 2, lab: 0 },
+      pre_requisite: 'EEP 1',
+      co_requisite: 'None'
+    },
+    
     {
       code: 'RPH',
       title: 'Readings in the Philippine History',
@@ -210,10 +222,10 @@ export const firstSemCourses = ref([
       co_requisite: 'None'
     },
     {
-      code: 'PATHFit 3',
-      title: 'Physical Activities Towards Health and Fitness',
+      code: 'PE 3',
+      title: 'Individual and Dual Sports',
       contact: { total: 2, lec: 2, lab: 0 },
-      total: { total: 2, lec: 2, lab: 0},
+      total: { total: 2, lec: 2, lab: 0 }, 
       pre_requisite: 'None',
       co_requisite: 'None'
     },
@@ -237,19 +249,19 @@ export const firstSemCourses = ref([
       co_requisite: 'None'
     },
     {
-      code: 'CSC 104',
-      title: 'Object-oriented Programming',
+      code: 'IS 103',
+      title: 'Enterprise Architecture and Information System',
       contact: { total: 3, lec: 2, lab: 1 },
       total: { total: 5, lec: 2, lab: 3 },
-      pre_requisite: 'None',
+      pre_requisite: 'IS 102',
       co_requisite: 'None'
     },
     {
-      code: 'ITE 16',
-      title: 'Information Management',
+      code: 'IS 104',
+      title: 'Financial Management',
       contact: { total: 3, lec: 2, lab: 1 },
       total: { total: 5, lec: 2, lab: 3 },
-      pre_requisite: 'None',
+      pre_requisite: 'IS 100',
       co_requisite: 'None'
     },
     {
@@ -261,11 +273,27 @@ export const firstSemCourses = ref([
       co_requisite: 'None'
     },
     {
-      code: 'IT 106',
-      title: 'Integrative Programming & Technologies 1',
+      code: 'IS 112',
+      title: 'IS Strategy, Policy, Management',
       contact: { total: 3, lec: 2, lab: 1 },
       total: { total: 5, lec: 2, lab: 3 },
-      pre_requisite: 'None',
+      pre_requisite: 'IS 107',
+      co_requisite: 'None'
+    },
+    {
+      code: 'IS 109',
+      title: 'IS Project Management 1',
+      contact: { total: 3, lec: 3, lab: 0 },
+      total: { total: 3, lec: 3, lab: 0 },
+      pre_requisite: 'IS 107',
+      co_requisite: 'None'
+    },
+    {
+      code: 'EEP 3',
+      title: 'English Enhancement Program 3',
+      contact: { total: 2, lec: 2, lab: 0 },
+      total: { total: 2, lec: 2, lab: 0 },
+      pre_requisite: 'EEP 2',
       co_requisite: 'None'
     },
     {
@@ -277,7 +305,7 @@ export const firstSemCourses = ref([
       co_requisite: 'None'
     },
     {
-      code: 'PATHFit 4',
+      code: 'PE 4',
       title: 'Major Sports/Team Sports',
       contact: { total: 2, lec: 2, lab: 0 },
       total: { total: 2, lec: 2, lab: 0 },
@@ -296,6 +324,22 @@ export const firstSemCourses = ref([
   
   export const thirdYearFirstSem = ref([
     {
+      code: 'CSC 106',
+      title: 'Software Engineering 1',
+      contact: { total: 3, lec: 2, lab: 1 },
+      total: { total: 5, lec: 2, lab: 3 },
+      pre_requisite: 'None',
+      co_requisite: 'None'
+    },
+    {
+      code: 'ITE 16',
+      title: 'Information Management',
+      contact: { total: 3, lec: 2, lab: 1 },
+      total: { total: 5, lec: 2, lab: 3 },
+      pre_requisite: 'None',
+      co_requisite: 'None'
+    },
+    {
       code: 'ITE 18',
       title: 'Applications Development and Emerging Technologies',
       contact: { total: 3, lec: 2, lab: 1 },
@@ -304,34 +348,18 @@ export const firstSemCourses = ref([
       co_requisite: 'None'
     },
     {
-      code: 'IT 109',
-      title: 'Systems Integration and Architecture 1',
+      code: 'IS 106',
+      title: 'Quantitaive Methods',
       contact: { total: 3, lec: 2, lab: 1 },
       total: { total: 5, lec: 2, lab: 3 },
-      pre_requisite: 'IT 106',
+      pre_requisite: 'CSC 102',
       co_requisite: 'None'
     },
     {
-      code: 'IT 108',
-      title: 'Advanced Database Management Systems',
-      contact: { total: 3, lec: 2, lab: 1 },
-      total: { total: 5, lec: 2, lab: 3 },
-      pre_requisite: 'ITE 16',
-      co_requisite: 'None'
-    },
-    {
-      code: 'IT 110',
-      title: 'Web Systems and Technologies',
-      contact: { total: 3, lec: 2, lab: 1 },
-      total: { total: 5, lec: 2, lab: 3 },
-      pre_requisite: 'ITE 16',
-      co_requisite: 'None'
-    },
-    {
-      code: 'IT 107',
-      title: 'Information Assurance and Security 1',
-      contact: { total: 3, lec: 2, lab: 1 },
-      total: { total: 5, lec: 2, lab: 3 },
+      code: 'ArtApp',
+      title: 'Art Appreciation',
+      contact: { total: 3, lec: 3, lab: 0 },
+      total: { total: 3, lec: 3, lab: 0 }, 
       pre_requisite: 'None',
       co_requisite: 'None'
     },
@@ -344,10 +372,10 @@ export const firstSemCourses = ref([
       co_requisite: 'None'
     },
     {
-      code: 'LWR',
-      title: 'Life and Works of Rizal',
-      contact: { total: 3, lec: 3, lab: 0 },
-      total: { total: 3, lec: 3, lab: 0 },
+      code: 'PROFEL 1',
+      title: 'Professional Elective 1',
+      contact: { total: 3, lec: null, lab: null },
+      total: { total: null, lec: null, lab: null },
       pre_requisite: 'None',
       co_requisite: 'None'
     },
@@ -362,6 +390,14 @@ export const firstSemCourses = ref([
   ]);
   
   export const thirdYearSecondSem = ref([
+    {
+      code: 'IS 198',
+      title: 'CAPSTONE Project 1',
+      contact: { total: 3, lec: 3, lab: 0 },
+      total: { total: 3, lec: 3, lab: 0 },
+      pre_requisite: 'CSC 106',
+      co_requisite: 'ITE 17'
+    },
     {
       code: 'ITE 17',
       title: 'ITE Technopreneurship',
@@ -379,26 +415,26 @@ export const firstSemCourses = ref([
       co_requisite: 'None'
     },
     {
-      code: 'IT 111',
-      title: 'Platform Technologies',
+      code: 'IS 111',
+      title: 'Evaluation of Business Performance',
       contact: { total: 3, lec: 3, lab: 0 },
       total: { total: 3, lec: 3, lab: 0 },
       pre_requisite: 'IT 108',
       co_requisite: 'None'
     },
     {
-      code: 'IT 198',
-      title: 'Software Project/ Research Project 1',
+      code: 'ETH',
+      title: 'Ethics',
       contact: { total: 3, lec: 3, lab: 0 },
       total: { total: 3, lec: 3, lab: 0 },
       pre_requisite: 'None',
-      co_requisite: 'ITE 17'
+      co_requisite: 'None'
     },
     {
-      code: 'PROFEL 1',
-      title: 'Professional Elective 1',
-      contact: { total: 3, lec: null, lab: null },
-      total: { total: null, lec: null, lab: null },
+      code: 'LWR',
+      title: 'Life and Works of Rizal',
+      contact: { total: 3, lec: 3, lab: 0 },
+      total: { total: 3, lec: 3, lab: 0 },
       pre_requisite: 'None',
       co_requisite: 'None'
     },
@@ -422,37 +458,38 @@ export const firstSemCourses = ref([
   
   export const fourthYearFirstSem = ref([
     {
-      code: 'IT 112',
-      title: 'Systems Administration and Maintenance',
-      contact: { total: 3, lec: 2, lab: 1 },
-      total: { total: 5, lec: 2, lab: 1 }, 
+      code: 'ITE 19',
+      title: 'ITE Competency Appraisal',
+      contact: { total: 0, lec: null, lab: null },
+      total: { total: 1.5, lec: 1.5, lab: null }, 
+      pre_requisite: 'ITE 14',
+      co_requisite: 'None'
+    },
+    {
+      code: 'IS 199',
+      title: 'CAPSTONE Project 2',
+      contact: { total: 3, lec: 3, lab: 0 },
+      total: { total: 3, lec: 3, lab: 0 },
+      pre_requisite: 'IS 198',
+      co_requisite: 'ITE 17'
+    },
+    {
+      code: 'IS 106',
+      title: 'Business Intelligence',
+      contact: { total: 3, lec: null, lab: null },
+      total: { total: null, lec: null, lab: null },
+      pre_requisite: 'IT 106',
+      co_requisite: 'None'
+    },
+    {
+      code: 'PROFEL 3',
+      title: 'Professional Elective 3',
+      contact: { total: 3, lec: null, lab: null },
+      total: { total: null, lec: null, lab: null },
       pre_requisite: 'None',
       co_requisite: 'None'
     },
-    {
-      code: 'IT 101',
-      title: 'Advanced Human Computer Interaction',
-      contact: { total: 3, lec: null, lab: null },
-      total: { total: null, lec: null, lab: null },
-      pre_requisite: 'IT 101',
-      co_requisite: 'None'
-    },
-    {
-      code: 'IT 199',
-      title: 'Software Project/Research Project 2',
-      contact: { total: 3, lec: 2, lab: 1 },
-      total: { total: 5, lec: 2, lab: 1 },
-      pre_requisite: 'IT 198',
-      co_requisite: 'None'
-    },
-    {
-      code: 'IT 113',
-      title: 'Information Assurance and Security 2',
-      contact: { total: 3, lec: 2, lab: 1 },
-      total: { total: 5, lec: 2, lab: 3 },
-      pre_requisite: 'IT 107',
-      co_requisite: 'None'
-    },
+   
     {
       code: 'PROFEL 4',
       title: 'Professional Elective 4',
@@ -473,21 +510,14 @@ export const firstSemCourses = ref([
   
   export const fourthYearSecondSem = ref([
     {
-      code: 'IT 197',
+      code: 'IS 197',
       title: 'OJT/Practicum',
       contact: { total: 3, lec: null, lab: null },
       total: { total: 320, lec: null, lab: null }, 
       pre_requisite: 'IT 198',
       co_requisite: 'None'
     },
-    {
-      code: 'ITE 19',
-      title: 'ITE Competency Appraisal',
-      contact: { total: 0, lec: null, lab: null },
-      total: { total: 1.5, lec: 1.5, lab: null }, 
-      pre_requisite: 'ITE 14',
-      co_requisite: 'None'
-    },
+   
     {
       code: 'SE 108',
       title: 'Pre-Employment Seminar 2',
