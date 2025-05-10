@@ -5,7 +5,7 @@ import Dashboard from '@/components/dashboard/Dashboard.vue'
 import AddDepartment from '@/components/prospectus/AddDepartment.vue'
 import IT_Dashboard from '@/components/dashboard/IT_Dashboard.vue'
 import IS_Dashboard from '@/components/dashboard/IS_Dashboard.vue'
-
+import NotFound from '@/components/404/NotFound.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,33 +26,34 @@ const router = createRouter({
       component: SignupView,
     },
     {
-
       path: '/dashboard/CS',
       name: 'CS_Dashboard',
       component: Dashboard,
     },
-
     {
       path: '/dashboard/IT',
       name: 'IT_Dashboard',
       component: IT_Dashboard,
     },
-
-     {
+    {
       path: '/dashboard/IS',
       name: 'IS_Dashboard',
       component: IS_Dashboard,
     },
-
     {
       path: '/add-department',
       name: 'AddDepartment',
       component: AddDepartment,
     },
-
- 
-
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: NotFound
+    }
   ],
+  scrollBehavior(to, from, savedPosition) {
+    return { top: 0 }
+  }
 })
 
 export default router
