@@ -240,4 +240,8 @@
   margin-bottom: 8px;
 }
   
-  
+.input-padding input {
+  padding-left: 15px !important;
+  padding-right: 12px !important;
+  padding-top: 25px !important;
+}

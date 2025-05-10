@@ -383,7 +383,8 @@ onMounted(() => {
           <v-form @submit.prevent="saveStudentProfile">
             <v-row>
               <v-col cols="12" sm="6">
-                <v-text-field 
+                <v-text-field
+                  class="input-padding" 
                   v-model="profileFields.first_name" 
                   label="First Name" 
                   required
@@ -392,7 +393,8 @@ onMounted(() => {
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
-                <v-text-field 
+                <v-text-field
+                  class="input-padding"  
                   v-model="profileFields.last_name" 
                   label="Last Name" 
                   required
@@ -404,7 +406,8 @@ onMounted(() => {
             
             <v-row>
               <v-col cols="12" sm="6">
-                <v-text-field 
+                <v-text-field
+                  class="input-padding"  
                   v-model="profileFields.middle_name" 
                   label="Middle Name"
                   outlined
@@ -413,6 +416,7 @@ onMounted(() => {
               </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field 
+                  class="input-padding" 
                   v-model="profileFields.year_level" 
                   label="Year Level" 
                   required
@@ -425,6 +429,7 @@ onMounted(() => {
             <v-row>
               <v-col cols="12">
                 <v-text-field 
+                  class="input-padding" 
                   v-model="profileFields.id_number" 
                   label="ID Number" 
                   required
