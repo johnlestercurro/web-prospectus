@@ -265,14 +265,6 @@ export const firstSemCourses = ref([
       co_requisite: 'None'
     },
     {
-      code: 'CSC 106',
-      title: 'Software Engineering 1',
-      contact: { total: 3, lec: 2, lab: 1 },
-      total: { total: 5, lec: 2, lab: 3 },
-      pre_requisite: 'None',
-      co_requisite: 'None'
-    },
-    {
       code: 'IS 112',
       title: 'IS Strategy, Policy, Management',
       contact: { total: 3, lec: 2, lab: 1 },
