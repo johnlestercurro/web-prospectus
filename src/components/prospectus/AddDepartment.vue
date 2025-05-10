@@ -2,6 +2,8 @@
 import { ref, onMounted, computed, reactive, watch } from 'vue'
 import { supabase } from '@/utils/supabase';
 import { useRouter } from 'vue-router';
+import '@mdi/font/css/materialdesignicons.css' 
+
 
 
 const user = ref(null) 
@@ -101,10 +103,10 @@ const fetchDepartmentData = async () => {
     return;
     }
 
-    // if (studentData.department_id === 7) {
-    // router.push({ name: 'IS_Dashboard' });
-    // return;
-    // }
+    if (studentData.department_id === 7) {
+    router.push({ name: 'IS_Dashboard' });
+    return;
+    }
     
     // 3. Fetch all departments for selection
     const { data: allDepts, error: deptsError } = await supabase
@@ -132,7 +134,7 @@ const fetchDepartmentAndCourses = async (departmentId) => {
   try {
     const { data: departmentData, error: deptError } = await supabase
       .from('departments')
-      .select('id, depatment_name, program, college, effectivity, basis')
+      .select('id, depatment_name, program, college, date_of_revision, effectivity, basis')
       .eq('id', departmentId)
       .single();
 
@@ -159,7 +161,8 @@ const programDetails = reactive({
   depatment_name: '',
   college: '',
   effectivity: '',
-  basis: ''
+  basis: '',
+  date_of_revision: ''
 });
 
 // fecth from table departments
@@ -169,6 +172,7 @@ watch(department, (newDept) => {
     programDetails.college = newDept.college || '';
     programDetails.effectivity = newDept.effectivity || '';
     programDetails.basis = newDept.basis || '';
+    programDetails.date_of_revision = newDept.date_of_revision || '';
   }
 }, { immediate: true });
 
@@ -185,7 +189,8 @@ const saveProgramDetails = async () => {
         program: programDetails.program,
         college: programDetails.college,
         effectivity: programDetails.effectivity,
-        basis: programDetails.basis
+        basis: programDetails.basis,
+        date_of_revision: programDetails.date_of_revision
       })
       .eq('id', department.value.id);
 
@@ -327,79 +332,75 @@ onMounted(() => {
               <p><strong>College:</strong> {{ department?.college || 'Undeclared' }}</p>
             </div>
             <div class="revision-info">
-              <p><strong>Date of Revision:</strong> Rev 2, {{ department?.revision_date || '11-08-2019' }}</p>
+              <p><strong>Date of Revision:</strong> Rev 2, {{ department?.date_of_revision || 'Undeclared' }}</p>
               <p><strong>Effectivity:</strong> AY {{ department?.effectivity || 'Undeclared' }}</p>
               <p><strong>Basis:</strong> CMO 25, s. {{ department?.basis || 'Undeclared' }}</p>
             </div>
           </div>
         </div>
   
-        <!-- Department Selection (only shown if no department selected) -->
-        <div v-if="!department?.id" class="department-selection-section">
-          <h3>Select Your Department</h3>
-          <select v-model="selectedDepartment" class="department-select">
-            <option value="" disabled selected>Select a department</option>
-            <option 
-              v-for="dept in departments" 
-              :key="dept.id" 
-              :value="dept.id"
-            >
-              {{ dept.depatment_name }}
-            </option>
-          </select>
-          <br>
-          <v-btn 
-            @click="updateDepartment"
-            :disabled="!selectedDepartment"
-            class="confirm-button"
-          >
-            Confirm Department
-        </v-btn>
-        </div>
+        <!-- Department Selection -->
+       <div v-if="!department?.id && !profileComplete" class="department-selection">
+    <h3 class="text-center">Select Your Department</h3>
+    
+    <div class="select-wrapper">
+      <v-select
+        v-model="selectedDepartment"
+        class="department-select mx-auto"
+        :items="departments"
+        item-title="depatment_name"
+        item-value="id"
+        label="Select department"
+        outlined
+        style="width: 300px;"
+      ></v-select>
+    </div>
+    
+    <br>
+    
+    <div class="text-center">
+      <v-btn 
+        @click="updateDepartment"
+        :disabled="!selectedDepartment"
+        class="confirm-button"
+      >
+        Confirm Department
+      </v-btn>
+    </div>
+  </div>
   
-      
-        <!-- Profile Creation/Update Section -->
-        <div v-if="!student.first_name || !student.last_name || !student.year_level || !student.id_number" class="profile-update-section">
+  <!-- Profile Creation/Update Section -->
+  <div v-if="department?.id && !profileComplete" class="profile-update-section">
     <h3 class="text-center">Complete Your Profile</h3>
     <v-sheet class="mx-auto pa-4" width="100%" max-width="600"> 
-        <v-form @submit.prevent="saveStudentProfile" class="profile-form">
-            <v-row>
-                <v-col cols="12" sm="6">
-                    <v-text-field v-model="profileFields.first_name" placeholder="First Name" required></v-text-field>
-                </v-col>
-                <v-col cols="12" sm="6">
-                    <v-text-field v-model="profileFields.last_name" placeholder="Last Name" required></v-text-field>
-                </v-col>
-            </v-row>
-            <v-row>
-                <v-col cols="12" sm="6">
-                    <v-text-field v-model="profileFields.middle_name" placeholder="Middle Name"></v-text-field>
-                </v-col>
-                <v-col cols="12" sm="6">
-                    <v-text-field v-model="profileFields.year_level" placeholder="Year Level" required></v-text-field>
-                </v-col>
-            </v-row>
-            <v-row>
-                <v-col cols="12">
-                    <v-text-field v-model="profileFields.id_number" placeholder="ID Number" required></v-text-field>
-                </v-col>
-                <v-col cols="12" class="text-center">
-                    <v-btn variant="outlined" type="submit" class="submit-button">Update Profile</v-btn>
-                </v-col>
-            </v-row>
-        </v-form>
+      <v-form @submit.prevent="saveStudentProfile" class="profile-form">
+        <v-row>
+          <v-col cols="12" sm="6">
+            <v-text-field v-model="profileFields.first_name" placeholder="First Name" required></v-text-field>
+          </v-col>
+          <v-col cols="12" sm="6">
+            <v-text-field v-model="profileFields.last_name" placeholder="Last Name" required></v-text-field>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12" sm="6">
+            <v-text-field v-model="profileFields.middle_name" placeholder="Middle Name"></v-text-field>
+          </v-col>
+          <v-col cols="12" sm="6">
+            <v-text-field v-model="profileFields.year_level" placeholder="Year Level" required></v-text-field>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12">
+            <v-text-field v-model="profileFields.id_number" placeholder="ID Number" required></v-text-field>
+          </v-col>
+          <v-col cols="12" class="text-center">
+            <v-btn variant="outlined" type="submit" class="submit-button">Save Profile</v-btn>
+          </v-col>
+        </v-row>
+      </v-form>
     </v-sheet>
-</div>
-
-            <!-- Profile Display Section -->
-            <div v-else class="profile-display">
-            <h3>Your Profile</h3>
-            <div class="profile-details">
-                <p><strong>Name:</strong> {{ student.first_name }} {{ student.middle_name }} {{ student.last_name }}</p>
-                <p><strong>ID Number:</strong> {{ student.id_number }}</p>
-                <p><strong>Year Level:</strong> {{ student.year_level }}</p>
-            </div>
-            </div>
+  </div>
 
       </div>
       </div>
